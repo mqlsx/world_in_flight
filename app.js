@@ -1,5 +1,3 @@
-var myenv = require("./env");
-
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
@@ -8,6 +6,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var methodOverride = require("method-override");
 var flash = require("connect-flash");
+
 
 // models and functions
 var User = require("./models/Buyer");
@@ -42,17 +41,23 @@ app.use(function(req, res, next){
    res.locals.success = req.flash("success");
    next();
 });
-
-
-// routes
+    
+// var commentRoutes = require("./routes/comments");
+// var campgroundRoutes = require("./routes/campgrounds");
 var indexRoute = require("./routes/index");
-var loginRoute = require("./routes/login");
-var registerRoute = require("./routes/register");
+// var loginRoute = require("./routes/login");
+// var registerRoute = require("./routes/register");
+
 app.use("/", indexRoute);
-app.use("/login", loginRoute);
-app.use("/register", registerRoute);
+// app.use("/login", loginRoute);
+// app.use("/register", registerRoute);
+// app.use("/campgrounds", campgroundRoutes);
 // app.use("/campgrounds/:id/comments", commentRoutes);
 
+
+// app.listen(3000, "127.0.0.1", function(){
+//     console.log("Now the server is running!")
+// });
 
 app.listen(myenv.port, myenv.port, function(){
     console.log("Now the server is running!")
