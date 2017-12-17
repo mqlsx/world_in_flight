@@ -51,7 +51,7 @@ router.get("/:id",function(req,res){
             console.log("productId2");
             console.log(err);
             req.flash('error', 'Sorry, This product does not exist!');
-            return res.redirect('/index');
+            res.render("shop/shop-item")
         } else {
             console.log("productId3");
             User.findById(foundProduct.seller,function(err, foundSeller){
@@ -59,7 +59,7 @@ router.get("/:id",function(req,res){
                     console.log(err);
                 }else{
                     console.log("productId4");
-                    res.render("shop/show",{product:foundProduct, seller:foundSeller})
+                    res.render("shop/shop-item",{product:foundProduct, seller:foundSeller})
                 }
             });
         }

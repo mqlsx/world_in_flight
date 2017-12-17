@@ -53,6 +53,7 @@ var productRoute = require("./routes/buynow");
 app.use("/", indexRoute);
 app.use("/shop-wishlist", wishlistRoute);
 app.use("/shop-product", productRoute);
+app.use("/shop-item", productRoute);
 // app.use("/register", registerRoute);
 // app.use("/campgrounds", campgroundRoutes);
 // app.use("/campgrounds/:id/comments", commentRoutes);
