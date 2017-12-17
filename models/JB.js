@@ -7,12 +7,12 @@ var JBSchema = new mongoose.Schema({
     },
     description: String,
     startTime:Date,
-    finishTime:Number,
+    finishTime:Date,
     historyPrice:[
         {
             seller:{
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Seller"
+                ref: "User"
             },
             price: Number
         }

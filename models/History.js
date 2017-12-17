@@ -3,17 +3,18 @@ var mongoose = require("mongoose");
 var HistorySchema = new mongoose.Schema({
     History:[
         {
-            time: Date,
+            time: {type: Date, default: Date.now},
             product:{
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Product"
             },
             buyer:{
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Buyer"
+                ref: "User"
             },
             quantity: Number,
-            price: Number
+            price: Number,
+            comment: String
         }
     
     ]

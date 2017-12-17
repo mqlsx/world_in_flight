@@ -5,6 +5,7 @@ var Product = require("../models/Products");
 var User = require("../models/User");
 var middleware = require("../middleware/index");
 var History = require("../models/History");
+var HistoryPrice = require("../models/PriceHistory");
 
 
 
@@ -43,17 +44,22 @@ router.post("/", middleware.isSeller, function(req, res){
 });
 
 router.get("/:id",function(req,res){
+    console.log("productId");
     Product.findById(req.params.id).populate(["historyPrice"]).exec(function(err, foundProduct){
+        console.log("productId1");
         if(err || !foundProduct){
+            console.log("productId2");
             console.log(err);
             req.flash('error', 'Sorry, This product does not exist!');
             return res.redirect('/index');
         } else {
+            console.log("productId3");
             User.findById(foundProduct.seller,function(err, foundSeller){
                 if(err){
                     console.log(err);
                 }else{
-                    res.render("buynow/show",{product:foundProduct, seller:foundSeller})
+                    console.log("productId4");
+                    res.render("shop/show",{product:foundProduct, seller:foundSeller})
                 }
             });
         }

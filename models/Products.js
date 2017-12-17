@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 
 var ProductSchema = new mongoose.Schema({
+    isDelete: Boolean,
     name: String,
     description: String,
     image: String,
@@ -14,7 +15,7 @@ var ProductSchema = new mongoose.Schema({
     ],
     seller: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Seller"
+        ref: "User"
     },
     classification: String
 });
