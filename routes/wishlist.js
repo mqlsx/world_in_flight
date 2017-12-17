@@ -26,14 +26,9 @@ router.get("/", function (req, res) {
             description:"Cool green dress with red bell"
         }
     ];
-    var items_value = 0;
-    items.forEach(function (t) {
-        items_value += t.price;
-    })
     res.render("shop/shop-wishlist", {
         items: items,
-        items_count: items.length,
-        items_value: items_value
+        items_count: items.length
     });
 });
 
