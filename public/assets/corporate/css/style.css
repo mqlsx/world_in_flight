@@ -429,7 +429,8 @@ Header and header elements
 	box-shadow: 0 1px 3px #ddd;		
 	background: #fff;
 	border-radius: 0;
-	margin-bottom: 23px;
+	margin-bottom: 0px;
+	padding-bottom:5px;
 	z-index: 999;
 	position: relative;
 }
@@ -460,8 +461,8 @@ body.page-header-fixed {
   font-weight: 400;
 
   margin-right: 67px;
-  padding-top: 22px;
-  padding-bottom: 22px;
+  padding-top: 0px;
+  padding-bottom: 2px;
 }
 
 .header .mobi-toggler {

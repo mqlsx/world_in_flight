@@ -48,14 +48,15 @@ app.use(function(req, res, next){
 var indexRoute = require("./routes/index");
 var wishlistRoute = require("./routes/wishlist");
 var productRoute = require("./routes/buynow");
-var auctionRoute = require("./routes/Auction");
-var accountRoute = require("./routes/account");
+// var registerRoute = require("./routes/register");
 
 app.use("/", indexRoute);
 app.use("/shop-wishlist", wishlistRoute);
 app.use("/shop-product", productRoute);
 app.use("/shop-auction", auctionRoute);
 app.use("/shop-account", accountRoute);
+app.use("/shop-item", productRoute);
+// app.use("/register", registerRoute);
 // app.use("/campgrounds", campgroundRoutes);
 // app.use("/campgrounds/:id/comments", commentRoutes);
 
