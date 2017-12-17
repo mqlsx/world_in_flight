@@ -52,9 +52,25 @@ router.get("/logout", function(req, res){
     res.redirect("/");
 });
 
+<<<<<<< HEAD
 module.exports = router;
 
 
 
+=======
+router.get("/about", function (req, res) {
+    res.render("shop/shop-about");
+})
+
+router.get("/faq", function (req, res) {
+    res.render("shop/shop-faq");
+})
+router.get("/privacy-policy", function (req, res) {
+    res.render("shop/shop-privacy-policy");
+})
+router.get("/terms-conditions", function (req, res) {
+    res.render("shop/shop-terms-conditions-page");
+})
+>>>>>>> a4a26a1588556679b73c8545059cc499238c1ce9
 
 
