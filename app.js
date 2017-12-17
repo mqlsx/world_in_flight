@@ -6,7 +6,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var methodOverride = require("method-override");
 var flash = require("connect-flash");
-var indexRoute = require("./routes/index");
+
 
 // models and functions
 var User = require("./models/Buyer");
@@ -44,21 +44,24 @@ app.use(function(req, res, next){
     
 // var commentRoutes = require("./routes/comments");
 // var campgroundRoutes = require("./routes/campgrounds");
-// var indexRoutes = require("./routes/index");
-
+var indexRoute = require("./routes/index");
+var loginRoute = require("./routes/login");
+var registerRoute = require("./routes/register");
 
 app.use("/", indexRoute);
+app.use("/login", loginRoute);
+app.use("/register", registerRoute);
 // app.use("/campgrounds", campgroundRoutes);
 // app.use("/campgrounds/:id/comments", commentRoutes);
 
 
-app.listen(3000, "127.0.0.1", function(){
-    console.log("Now the server is running!")
-});
-
 // app.listen(3000, "127.0.0.1", function(){
 //     console.log("Now the server is running!")
 // });
+
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log("Now the server is running!")
+});
 
 
 
