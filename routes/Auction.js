@@ -6,21 +6,20 @@ var middleware = require("../middleware");
 
 // campgrounds
 router.get("/", function(req, res){
-    Campground.find({}, function(err, allCampgrounds) {
+    Auction.find({}, function(err, allCampgrounds) {
         if (err) {
             console.log(err);
         } else {
-            res.render("campgrounds/campgrounds",{campgrounds:allCampgrounds});
+            res.render("shop/auction-list",{auction:allAuctions});
         }
     })
 });
 
 router.get("/new", middleware.isLoggedIn, function(req, res) {
-   res.render("campgrounds/new"); 
+   res.render("shop/new-auction");
 });
 
 router.post("/", middleware.isLoggedIn, function(req, res) {
-    // get data from form and add to campgrounds array
     var name = req.body.name;
     var image = req.body.image;
     var description = req.body.description;
@@ -43,18 +42,37 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
 
 // id
 router.get("/:id", function(req, res) {
-    Campground.findById(req.params.id).populate("comments").exec(function(err, campground) {
+    Auction.findById(req.params.id).populate("comments").exec(function(err, auction) {
         if (err) {
             console.log(err);
+            auction = {
+                title:"item title",
+                finishTime: "2017/12/18 10:00:00",
+                classfication: "part",
+                startTime:new Date(),
+                startPrice: 123,
+                currentPrice: 246,
+                maxPrice:250,
+                historyPrice:[
+                    {
+                        buyer: "bin",
+                        price: 135
+                    },{
+                        buyer: "bin2",
+                        price: 157
+                    }
+                ]
+            };
+            res.render("shop/show-auction", {item: auction});
         } else {
-            res.render("campgrounds/show", {campground: campground});
+            res.render("shop/show-auction", {item: auction});
         }
     });
 });
 
 
 // EDIT CAMPGROUND ROUTE
-router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
+router.get("/:id/edit",  function(req, res){
     Campground.findById(req.params.id, function(err, foundCampground){
         if (err) {
             console.log(err);
@@ -65,7 +83,7 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
 });
 
 // UPDATE CAMPGROUND ROUTE
-router.put("/:id",middleware.checkCampgroundOwnership, function(req, res){
+router.put("/:id",function(req, res){
     // find and update the correct campground
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
        if(err){
@@ -78,7 +96,7 @@ router.put("/:id",middleware.checkCampgroundOwnership, function(req, res){
 });
 
 // DESTROY CAMPGROUND ROUTE
-router.delete("/:id",middleware.checkCampgroundOwnership, function(req, res){
+router.delete("/:id", function(req, res){
    Campground.findByIdAndRemove(req.params.id, function(err){
       if(err){
           res.redirect("/campgrounds");
