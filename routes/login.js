@@ -3,11 +3,12 @@ var router = express.Router();
 var passport = require("passport");
 
 
-router.get("/login", function(req, res){
+router.get("/", function(req, res){
+    console.log("login");
     res.render("login");
 });
 
-router.post("/login", passport.authenticate("local",
+router.post("/", passport.authenticate("local",
     {
         successRedirect: "/campgrounds",
         failureRedirect: "/login"

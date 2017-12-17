@@ -45,12 +45,12 @@ app.use(function(req, res, next){
 // var commentRoutes = require("./routes/comments");
 // var campgroundRoutes = require("./routes/campgrounds");
 var indexRoute = require("./routes/index");
-var loginRoute = require("./routes/login");
-var registerRoute = require("./routes/register");
+// var loginRoute = require("./routes/login");
+// var registerRoute = require("./routes/register");
 
 app.use("/", indexRoute);
-app.use("/login", loginRoute);
-app.use("/register", registerRoute);
+// app.use("/login", loginRoute);
+// app.use("/register", registerRoute);
 // app.use("/campgrounds", campgroundRoutes);
 // app.use("/campgrounds/:id/comments", commentRoutes);
 
