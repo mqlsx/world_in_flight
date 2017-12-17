@@ -8,10 +8,8 @@ var methodOverride = require("method-override");
 var flash = require("connect-flash");
 
 // models and functions
-var Campground = require("./models/campground");
-var Comment = require("./models/comment");
-var User = require("./models/user");
-var seedDB = require("./seeds");
+var User = require("./models/Buyer");
+//var seedDB = require("./seeds");
 
 // mongoose setup
 mongoose.Promise = global.Promise;
@@ -45,14 +43,14 @@ app.use(function(req, res, next){
    next();
 });
     
-var commentRoutes = require("./routes/comments");
-var campgroundRoutes = require("./routes/campgrounds");
-var indexRoutes = require("./routes/index");
+// var commentRoutes = require("./routes/comments");
+// var campgroundRoutes = require("./routes/campgrounds");
+// var indexRoutes = require("./routes/index");
 
 
-app.use("/", indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
+// app.use("/", indexRoutes);
+// app.use("/campgrounds", campgroundRoutes);
+// app.use("/campgrounds/:id/comments", commentRoutes);
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
