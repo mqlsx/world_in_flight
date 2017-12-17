@@ -47,10 +47,12 @@ app.use(function(req, res, next){
 // var campgroundRoutes = require("./routes/campgrounds");
 var indexRoute = require("./routes/index");
 var wishlistRoute = require("./routes/wishlist");
+var productRoute = require("./routes/product");
 // var registerRoute = require("./routes/register");
 
 app.use("/", indexRoute);
 app.use("/shop-wishlist", wishlistRoute);
+app.use("/shop-product", productRoute);
 // app.use("/register", registerRoute);
 // app.use("/campgrounds", campgroundRoutes);
 // app.use("/campgrounds/:id/comments", commentRoutes);
