@@ -2,18 +2,6 @@ var mongoose = require("mongoose");
 var Campground = require("./models/campground");
 var Comment = require("./models/comment");
 
-var data = [
-    {name: "Pickwick Dam Campground", 
-    image: "http://pickwick-dam.com/wp-content/uploads/2015/08/17991101764_fcb19c7311_k.jpg",
-    description: "This is a greate campground!"    
-    },
-    
-    {name: "crystall river", 
-    image: "http://visitmckenzieriver.com/oregon/wp-content/uploads/2015/06/paradise_campground.jpg",
-    description: "A beautiful place!"
-    }
-    
-]
 
 
 

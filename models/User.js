@@ -5,7 +5,7 @@ var BuyerSchema = new mongoose.Schema({
     username: String,
     email: String,
     password: String,
-    
+    isSeller: Boolean,
     // type stores membership level directly
     membership: {
         id: {
@@ -14,7 +14,6 @@ var BuyerSchema = new mongoose.Schema({
         },
         type: String
     },
-    
     history: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -42,9 +41,15 @@ var BuyerSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "History"
         }
+    ],
+    Products: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Product"
+        }
     ]
 });
 
 BuyerSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model("Buyer", BuyerSchema);
+module.exports = mongoose.model("User", BuyerSchema);

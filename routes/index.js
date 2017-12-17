@@ -1,8 +1,9 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
-var buyerUser = require("../models/Buyer");
-var sellerUser = require("../models/Seller");
+var User = require("../models/User");
+
+
 
 
 
@@ -16,33 +17,21 @@ router.get("/register", function(req, res){
 
 //handle sign up logic
 router.post("/register", function(req, res){
-    if(req.body.isBuyer){
-        var newUser = new buyerUser({username: req.body.username, email: req.body.email});
-        buyerUser.register(newUser, req.body.password, function(err, user){
-            if(err){
-                req.flash("error", err.message);
-                res.redirect("back");
-            } else {
-                passport.authenticate("local")(req, res, function(){
-                    req.flash("success", "Welcome to YelpCamp" + user.username);
-                    res.redirect("/campgrounds");
-                });
-            }
-        });
-    }else{
-        var newUser = new sellerUser({username: req.body.username, email: req.body.email});
-        sellerUser.register(newUser, req.body.password, function(err, user){
-            if(err){
-                req.flash("error", err.message);
-                res.redirect("back");
-            } else {
-                passport.authenticate("local")(req, res, function(){
-                    req.flash("success", "Welcome to YelpCamp" + user.username);
-                    res.redirect("/campgrounds");
-                });
-            }
-        });
-    }
+    var newUser = new User({username: req.body.username, email: req.body.email});
+    if(!req.body.isSeller) newUser.isSeller=false;
+    else newUser.isSeller=true;
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            req.flash("error", err.message);
+            res.redirect("back");
+        } else {
+            passport.authenticate("local")(req, res, function(){
+                req.flash("success", "Welcome to YelpCamp" + user.username);
+                res.redirect("/");
+            });
+        }
+    });
+    
 });
 
 
@@ -52,7 +41,7 @@ router.get("/login", function(req, res){
 
 router.post("/login", passport.authenticate("local",
     {
-        successRedirect: "/campgrounds",
+        successRedirect: "/",
         failureRedirect: "/login"
     }), function(req, res){
 });
@@ -60,9 +49,12 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", function(req, res){
     req.logout();
     req.flash("success", "Logged you out!");
-    res.redirect("/campgrounds");
+    res.redirect("/");
 });
 
-
-
 module.exports = router;
+
+
+
+
+
