@@ -47,7 +47,7 @@ app.use(function(req, res, next){
 // var campgroundRoutes = require("./routes/campgrounds");
 var indexRoute = require("./routes/index");
 var wishlistRoute = require("./routes/wishlist");
-var productRoute = require("./routes/product");
+var productRoute = require("./routes/buynow");
 // var registerRoute = require("./routes/register");
 
 app.use("/", indexRoute);

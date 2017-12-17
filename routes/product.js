@@ -1,39 +1,20 @@
 var express = require("express");
 var router = express.Router();
-var passport = require("passport");
+var Product = require("../models/product");
 
 
-router.get("/", function (req, res) {
-    console.log("wishlist");
-    var items = [
-        {
-            image: "/assets/pages/img/cart-img.jpg",
-            quantity: 3,
-            price: 121,
-            owner: "bin",
-            description:"Cool green dress with red bell"
-        }, {
-            image: "/assets/pages/img/cart-img.jpg",
-            quantity: 3,
-            price: 121,
-            owner: "bin",
-            description:"Cool green dress with red bell"
-        }, {
-            image: "/assets/pages/img/cart-img.jpg",
-            quantity: 3,
-            price: 121,
-            owner: "bin",
-            description:"Cool green dress with red bell"
+router.get("/:id", function(req, res) {
+   Product.findById(req.params.id)
+});
+
+// id
+router.get("/:id", function(req, res) {
+    Campground.findById(req.params.id).populate("comments").exec(function(err, campground) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("campgrounds/show", {campground: campground});
         }
-    ];
-    var items_value = 0;
-    items.forEach(function (t) {
-        items_value += t.price;
-    })
-    res.render("shop/shop-wishlist", {
-        items: items,
-        items_count: items.length,
-        items_value: items_value
     });
 });
 

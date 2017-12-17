@@ -16,10 +16,7 @@ var ProductSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Seller"
     },
-    classification:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Classfication"
-    }
+    classification: String
 });
 
 module.exports = mongoose.model("Product", ProductSchema);
