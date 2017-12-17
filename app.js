@@ -55,11 +55,7 @@ app.use("/", indexRoute);
 // app.use("/campgrounds/:id/comments", commentRoutes);
 
 
-// app.listen(3000, "127.0.0.1", function(){
-//     console.log("Now the server is running!")
-// });
-
-app.listen(myenv.port, myenv.port, function(){
+app.listen(myenv.port, myenv.ip, function(){
     console.log("Now the server is running!")
 });
 
