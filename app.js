@@ -54,7 +54,7 @@ app.use("/", indexRoute);
 // app.use("/campgrounds", campgroundRoutes);
 // app.use("/campgrounds/:id/comments", commentRoutes);
 
-
+var myenv = require("./env");
 app.listen(myenv.port, myenv.ip, function(){
     console.log("Now the server is running!")
 });
