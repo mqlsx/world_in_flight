@@ -6,7 +6,7 @@ var AuctionSchema = new mongoose.Schema({
         ref: "Product"
     },
     startTime:Date,
-    finishTime:Number,
+    finishTime:Date,
     historyPrice:[
         {
             buyer:{

@@ -23,4 +23,4 @@ var SellerSchema = new mongoose.Schema({
 
 SellerSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model("Buyer", SellerSchema);
+module.exports = mongoose.model("Seller", SellerSchema);

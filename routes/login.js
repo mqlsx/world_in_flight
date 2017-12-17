@@ -18,3 +18,6 @@ router.get("/logout", function(req, res){
     req.flash("success", "Logged you out!");
     res.redirect("/");
 });
+
+
+module.exports = router;
